@@ -14,7 +14,7 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.title("مsحاسبه گر خسارت درمانی")
+root.title("محاسبه‌گر خسارت درمانی")
 
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
@@ -78,7 +78,8 @@ def opg_clicked():
     opg_window.rowconfigure(4, weight = 1)
     opg_window.columnconfigure(0, weight = 1)
     opg_window.columnconfigure(1, weight = 1)
-    
+    opg_window.attributes('-topmost', True)
+
     total_Label = Label(opg_window, text = "مبلغ کل", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
     total_Label.grid(row = 0, column = 1, sticky=NSEW)
     total_Entry = Entry(opg_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = opg_total); 
@@ -107,7 +108,7 @@ def azmayesh_clicked():
     azmayesh_window.title("محسابه خسارات آزمایش")
     azmayesh_window.geometry(f"{400}x{400}+{x}+{y}")
     azmayesh_window.config(bg = "#ebecee")
-    oazmayesh_window.resizable(False, False)
+    azmayesh_window.resizable(False, False)
     azmayesh_window.rowconfigure(0, weight = 1)
     azmayesh_window.rowconfigure(1, weight = 1)
     azmayesh_window.rowconfigure(2, weight = 1)
