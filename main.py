@@ -14,7 +14,7 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.title("محاسبه گر خسارت درمانی")
+root.title("مsحاسبه گر خسارت درمانی")
 
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
