@@ -13,6 +13,9 @@ current task/state:
 from tkinter import *
 from tkinter import messagebox
 
+tarafe_opg = 1861720
+franshize = 10
+
 root = Tk()
 root.title("محاسبه‌گر خسارت درمانی")
 
@@ -56,15 +59,33 @@ def opg_clicked():
             print("convert to int sucsesful")      
             
             if (sazman == "0" or sazman == "") and (bimar != "0" and bimar != ""):
-                print("BIMAR")
-                
+                if int(pay) > (tarafe_opg*0.9):
+                    bedone_kasr = tarafe_opg - int(bimar)
+                    ba_kasr = int(pay) - bedone_kasr
+                    ghabel_pardakht = (ba_kasr*0.9) + bedone_kasr
+                    print(int(ghabel_pardakht))
+
+                else:
+                    ghabel_pardakht = int(pay)
+                    print(ghabel_pardakht)
                 
                 
             elif (sazman != "0" and sazman != "") and (bimar == "0" or bimar == ""):
-                print("SAZMAN")
-                
+                sahm_bimar = (int(sazman) / 30) * 70
+                ba_kasr = (int(pay) - sahm_bimar) *0.9
+                ghabel_pardakht = int(sahm_bimar + ba_kasr)
+                print(ghabel_pardakht)
+
             elif (sazman != "0" and sazman != "") and (bimar != "0" and bimar != ""):
-                print("HAR DO")
+                if int(pay) > (tarafe_opg*0.9):
+                    bedone_kasr = tarafe_opg - int(bimar)
+                    ba_kasr = int(pay) - bedone_kasr
+                    ghabel_pardakht = (ba_kasr*0.9) + bedone_kasr
+                    print(int(ghabel_pardakht))
+
+                else:
+                    ghabel_pardakht = int(pay)
+                    print(ghabel_pardakht)
     
     opg_window = Toplevel()
     opg_window.title("محسابه خسارات پاراکلینیکی")
@@ -102,7 +123,9 @@ def opg_clicked():
     
     calculate_Button = Button(opg_window, text = "محاسبه", font="Btitr 14",bg = "#a3e3ec", command=opg_calculate)
     calculate_Button.grid(row = 4, column = 0, columnspan = 2)
-    
+
+
+  
 def azmayesh_clicked():
     azmayesh_window = Toplevel(root)
     azmayesh_window.title("محسابه خسارات آزمایش")
