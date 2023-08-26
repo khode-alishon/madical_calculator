@@ -87,6 +87,7 @@ def opg_clicked():
                     ghabel_pardakht = int(pay)
                     print(ghabel_pardakht)
     
+    
     opg_window = Toplevel()
     opg_window.title("محسابه خسارات پاراکلینیکی")
     opg_window.geometry(f"{400}x{400}+{x}+{y}")
@@ -125,7 +126,7 @@ def opg_clicked():
     calculate_Button.grid(row = 4, column = 0, columnspan = 2)
 
 
-  
+
 def azmayesh_clicked():
     azmayesh_window = Toplevel(root)
     azmayesh_window.title("محسابه خسارات آزمایش")
