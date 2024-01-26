@@ -9,10 +9,12 @@ current task/state:
 
 """
 
-
+from tkinter.ttk import *
 from tkinter import *
 from tkinter import messagebox
 import pyperclip
+import sys
+sys.path.insert(0, "./calculate.png")
 
 tarafe_opg = 1861720
 franshize = 10
@@ -133,7 +135,7 @@ def opg_clicked(e = 1):
     opg_window = Toplevel()
     opg_window.title("محسابه خسارات پاراکلینیکی")
     opg_window.geometry(f"{400}x{400}+{x}+{y}")
-    opg_window.config(bg = "#234884")
+    opg_window.config(bg = "#e6e6e6")
     opg_window.resizable(False, False)
     opg_window.rowconfigure(0, weight = 1)
     opg_window.rowconfigure(1, weight = 1)
@@ -146,27 +148,28 @@ def opg_clicked(e = 1):
     opg_window.bind('<Up>', up)
     opg_window.bind('<Down>', down)
 
-    total_Label = Label(opg_window, text = "مبلغ کل", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
+    total_Label = Label(opg_window, text = "مبلغ کل", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold");
     total_Label.grid(row = 0, column = 1, sticky=NSEW)
     total_Entry = Entry(opg_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = opg_total); 
     total_Entry.grid(row = 0, column = 0)
     
-    sazman_Label = Label(opg_window, text = "سهم سازمان", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold"); 
+    sazman_Label = Label(opg_window, text = "سهم سازمان", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold"); 
     sazman_Label.grid(row = 1, column = 1, sticky=NSEW)
     sazman_Entry = Entry(opg_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = opg_sazman); 
     sazman_Entry.grid(row = 1, column = 0)
     
-    bimar_Label = Label(opg_window, text = "سهم بیمار", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
+    bimar_Label = Label(opg_window, text = "سهم بیمار", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold");
     bimar_Label.grid(row = 2, column = 1, sticky=NSEW)
     bimar_Entry = Entry(opg_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = opg_bimar);
     bimar_Entry.grid(row = 2, column = 0)
     
-    pay_Label = Label(opg_window, text = "مبلغ پرداختی", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
+    pay_Label = Label(opg_window, text = "مبلغ پرداختی", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold");
     pay_Label.grid(row = 3, column = 1, sticky=NSEW)
     pay_Entry = Entry(opg_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = opg_pay);
     pay_Entry.grid(row = 3, column = 0)
-    
-    calculate_Button = Button(opg_window, text = "محاسبه", font="Btitr 14",bg = "#a3e3ec", command=opg_calculate)
+    global photo
+    photo = PhotoImage(file=r'calculate.png')
+    calculate_Button = Button(opg_window, image = photo, borderwidth=0,  command=opg_calculate)
     calculate_Button.grid(row = 4, column = 0, columnspan = 2)
     
     
@@ -219,15 +222,15 @@ def azmayesh_clicked(e = 1):
         else:
             
             if int(az_sazman) != 0:
-                bedone_kasr = int(az_sazman)/30 *70
+                bedone_kasr = int(az_sazman)/22 *78
                 ba_kasr = (int(az_pay) - bedone_kasr) *0.9
                 az_ghabel_pardakht = int(ba_kasr + bedone_kasr)
                 print(az_ghabel_pardakht)
                 pyperclip.copy(int(az_ghabel_pardakht))
                 azmayesh_window.destroy()
             else:
-                az_sazman = int(az_bimar) /70 *30
-                bedone_kasr = int(az_sazman)/30 *70
+                az_sazman = int(az_bimar) /78 *22
+                bedone_kasr = int(az_sazman)/22 *78
                 ba_kasr = (int(az_pay) - bedone_kasr) *0.9
                 az_ghabel_pardakht = int(ba_kasr + bedone_kasr)
                 print(az_ghabel_pardakht)
@@ -237,7 +240,7 @@ def azmayesh_clicked(e = 1):
     azmayesh_window = Toplevel()
     azmayesh_window.title("محاسبه هزینه‌ی آزمایش")
     azmayesh_window.geometry(f"{400}x{400}+{x}+{y}")
-    azmayesh_window.config(bg = "#234884")
+    azmayesh_window.config(bg = "#e6e6e6")
     azmayesh_window.resizable(False, False)
     azmayesh_window.rowconfigure(0, weight = 1)
     azmayesh_window.rowconfigure(1, weight = 1)
@@ -251,40 +254,41 @@ def azmayesh_clicked(e = 1):
     azmayesh_window.bind('<Down>', down)
     azmayesh_window.grab_set()
 
-    total_Label = Label(azmayesh_window, text = "مبلغ کل", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
+    total_Label = Label(azmayesh_window, text = "مبلغ کل", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold");
     total_Label.grid(row = 0, column = 1, sticky=NSEW)
     total_Entry = Entry(azmayesh_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = azmayesh_total); 
     total_Entry.grid(row = 0, column = 0)
     
-    sazman_Label = Label(azmayesh_window, text = "سهم سازمان", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold"); 
+    sazman_Label = Label(azmayesh_window, text = "سهم سازمان", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold"); 
     sazman_Label.grid(row = 1, column = 1, sticky=NSEW)
     sazman_Entry = Entry(azmayesh_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = azmayesh_sazman); 
     sazman_Entry.grid(row = 1, column = 0)
     
-    bimar_Label = Label(azmayesh_window, text = "سهم بیمار", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
+    bimar_Label = Label(azmayesh_window, text = "سهم بیمار", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold");
     bimar_Label.grid(row = 2, column = 1, sticky=NSEW)
     bimar_Entry = Entry(azmayesh_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = azmayesh_bimar);
     bimar_Entry.grid(row = 2, column = 0)
     
-    pay_Label = Label(azmayesh_window, text = "مبلغ پرداختی", bg = "#234884", fg = "#ffffff", font = "Btitr 14 bold");
+    pay_Label = Label(azmayesh_window, text = "مبلغ پرداختی", bg = "#e6e6e6", fg = "black", font = "Btitr 14 bold");
     pay_Label.grid(row = 3, column = 1, sticky=NSEW)
     pay_Entry = Entry(azmayesh_window, font="Bnazanin 14", highlightcolor="#d4e4f4", highlightthickness=2, textvariable = azmayesh_pay);
     pay_Entry.grid(row = 3, column = 0)
-    
-    calculate_Button = Button(azmayesh_window, text = "محاسبه", font="Btitr 14",bg = "#a3e3ec", command=azmayesh_calculate)
+    global photo
+    photo = PhotoImage(file=r'calculate.png')
+    calculate_Button = Button(azmayesh_window, image=photo, command=azmayesh_calculate, borderwidth=0)
     calculate_Button.grid(row = 4, column = 0, columnspan = 2)
 
     entries = [total_Entry,sazman_Entry, bimar_Entry, pay_Entry]
     entries[azmayesh_index].focus_set()
 
 
-text = Label(root, text = "انتخاب نوع خسارت", bg = "#234884", fg = "#ffffff", font = "Btitr 18 bold")
+text = Label(root, text = "انتخاب نوع خسارت", bg = "#eff2f5", fg = "black", font = "Btitr 18 bold")
 text.grid(row = 0, column = 1, sticky=NSEW)
 
-opg_Button = Button(root, text = "رادیوگرافی پانورکس و غیره", bg = "#d4e4f4", fg = "black", font="Bnazanin 18 bold", command = opg_clicked)
+opg_Button = Button(root, text = "رادیوگرافی پانورکس و غیره", bg = "#e6e6e6", fg = "black", font="Bnazanin 18 bold",borderwidth=0,  command = opg_clicked)
 opg_Button.grid(row = 1, column = 1, sticky=NSEW)
 
-azmayesh_Button = Button(root, text = "انواع آزمایش", bg = "#d4e4f4", fg = "black", font="Bnazanin 18 bold", command = azmayesh_clicked)
+azmayesh_Button = Button(root, text = "انواع آزمایش", bg = "#e6e6e6", fg = "black", font="Bnazanin 18 bold", borderwidth=0,command = azmayesh_clicked)
 azmayesh_Button.grid(row = 2, column = 1, sticky=NSEW)
 
 
